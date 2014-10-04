@@ -1,4 +1,4 @@
 <?php 
 function asset_url(){
-   return 'http://localhost/inventario/';
+   return 'http://localhost/inventarioGIT/inventario/';
 }

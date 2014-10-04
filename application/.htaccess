@@ -7,5 +7,5 @@ DirectoryIndex index.php
      
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ /inventario/index.php?/$1 [L]
+    RewriteRule ^(.*)$ /inventarioGIT/inventario/index.php?/$1 [L]
 </IfModule> 
