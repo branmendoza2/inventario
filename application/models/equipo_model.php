@@ -114,18 +114,26 @@ class Equipo_Model extends CI_Model{
 	
 	
 	function getAll(){
-		$query = $this->db->query('SELECT e.id,e.nombre,e.modelo,e.nserie,e.ninventario,e.observacion,e.imagen,m.descripcion marca,es.descripcion Estado,a.descripcion Area from equipo e,marca m, estado es, areas a where e.marca_id=m.id and e.estado_id=es.id and e.area_id=a.id');
+		$query = $this->db->query('SELECT e.id,e.nombre,e.modelo,e.nserie,e.ninventario,e.observacion,e.imagen,m.descripcion marca,a.descripcion Area,es.descripcion Estado from equipo e,marca m, areas a, estado es,detalle_estado de where e.marca_id=m.id and e.area_id=a.id and e.id= de.equipo_id and es.id=(Select estado_id from detalle_estado where id=(select max(id) from detalle_estado where equipo_id=e.id)) group by e.id');
 		return $query->result();
 	}
 	
     function getById($id){
-        $query = $this->db->query('SELECT e.id,e.nombre,e.modelo,e.nserie,e.ninventario,e.observacion,e.imagen,m.descripcion marca,es.descripcion Estado,a.descripcion Area from equipo e,marca m, estado es, areas a where e.marca_id=m.id and e.estado_id=es.id and e.area_id=a.id and e.area_id='.$id);
+        $query = $this->db->query('SELECT e.id,e.nombre,e.modelo,e.nserie,e.ninventario,e.observacion,e.imagen,m.descripcion marca,a.descripcion Area,es.descripcion Estado from equipo e,marca m, areas a, estado es,detalle_estado de where e.marca_id=m.id and e.area_id=a.id and e.id= de.equipo_id and es.id=(Select estado_id from detalle_estado where id=(select max(id) from detalle_estado where equipo_id=e.id)) and e.id ='.$id . ' group by e.id');
         return $query->result();
     }
 	
 	function getByArea($id){
-        $query = $this->db->query('SELECT e.id,e.nombre,e.modelo,e.nserie,e.ninventario,e.observacion,e.imagen,m.descripcion marca,es.descripcion Estado,a.descripcion Area from equipo e,marca m, estado es, areas a where e.marca_id=m.id and e.estado_id=es.id and e.area_id=a.id and e.id='.$id);
+        $query = $this->db->query('SELECT e.id,e.nombre,e.modelo,e.nserie,e.ninventario,e.observacion,e.imagen,m.descripcion marca,a.descripcion Area,es.descripcion Estado from equipo e,marca m, areas a, estado es,detalle_estado de where e.marca_id=m.id and e.area_id=a.id and e.id= de.equipo_id and es.id=(Select estado_id from detalle_estado where id=(select max(id) from detalle_estado where equipo_id=e.id)) and e.area_id ='.$id . ' group by e.id');
         return $query->result();
+    }
+
+    function getMaxId(){
+
+        $query = $this->db->query('SELECT MAX(id) id from equipo');
+        $id=$query->row_array();
+        return $id['id'];
+
     }
 
     
@@ -139,9 +147,11 @@ class Equipo_Model extends CI_Model{
         $this->db->set('ninventario', $equipo->getNIventario());
         $this->db->set('imagen', $equipo->getImagen());
         $this->db->set('observacion', $equipo->getObservacion());
-        $this->db->set('estado_id', $equipo->getEstado());
         $this->db->set('area_id', $equipo->getArea());
         $this->db->insert('equipo');
+        $this->db->set('equipo_id', $equipo->getId());
+        $this->db->set('estado_id', $equipo->getEstado());
+        $this->db->insert('detalle_estado');
     }
 
     function actualizar($carrera)

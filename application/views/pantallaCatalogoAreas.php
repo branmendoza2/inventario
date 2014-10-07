@@ -41,7 +41,7 @@
                                 foreach ($areas as $valor) { ?>
                                 <tr>
                                     <td><?php echo utf8_decode($valor->Id) ?></td>
-                                    <td><?php echo utf8_decode($valor->Descripcion) ?></td>
+                                    <td><?php echo $valor->Descripcion ?></td>
                                     <td><a href="<?=asset_url()?>index.php/equipo/area?id=<?php echo utf8_decode($valor->Id) ?>"><i class="fa fa-edit"></i>Ver Equipos</a></td>                                    
                                 </tr>
                                 <?php } ?>

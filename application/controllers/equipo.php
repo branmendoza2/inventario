@@ -41,6 +41,15 @@ class Equipo extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function estados(){
+		$id=$_GET['id'];
+		$equipo=$this->equipo_model->getById($id);
+		$estados=$this->estado_model->getById($id);
+		$this->load->view('head');
+		$this->load->view('pantallaHistorialEstados',compact('equipo','estados'));
+		$this->load->view('footer');
+
+	}
 
 
 
@@ -48,7 +57,10 @@ class Equipo extends CI_Controller {
 	{
 		$uploaddir = 'assets/img/';
 		$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+		$id=$this->equipo_model->getMaxId();
+		$id+=1;
 		$equipo = new Equipo_Model();
+		$equipo->setId($id);
 		$equipo->setNombre($_REQUEST['nombre']);
 		$equipo->setMarca($_REQUEST['marca']);
 		$equipo->setModelo($_REQUEST['modelo']);
@@ -58,7 +70,10 @@ class Equipo extends CI_Controller {
 		$equipo->setObservacion($_REQUEST['observacion']);
 		$equipo->setEstado($_REQUEST['estado']);
 		$equipo->setArea($_REQUEST['area']);		
-		move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);	
+		move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
+		
+			
+
 		$this->equipo_model->insertar($equipo);
 		$this->index();
 	}

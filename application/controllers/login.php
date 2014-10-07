@@ -40,6 +40,7 @@ class Login extends CI_Controller {
 		foreach ($consulta->result() as $fila)
 		{
 			$_SESSION['usuario']=$fila->id;
+			$_SESSION['privilegio']=$fila->privilegio;
 		    $valoret=1;
 		}
 

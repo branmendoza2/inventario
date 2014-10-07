@@ -41,6 +41,13 @@ class estado_model extends CI_Model{
 		$query = $this->db->get('estado');
 		return $query->result();
 	}
+
+
+    function getById($id){
+ 
+        $query = $this->db->query('SELECT ed.id,ed.equipo_id,ed.estado_id,ed.fecha,es.descripcion from detalle_estado ed,estado es where ed.estado_id=es.id and ed.equipo_id='.$id.' order by ed.id asc ');
+        return $query->result();
+    }
 	
 	
 

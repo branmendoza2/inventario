@@ -8,53 +8,48 @@
                            
                         </ul>
                         <!--breadcrumbs end -->
-                    <h1 class="h1">Catalogo de Equipos</h1>
+                    <h1 class="h1">Historial Estados</h1>
                     </div>
                 </div>
 
-            <div class="row">
+             <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <h3 class="panel-title">Equipos</h3>
+                          <?php 
+                            foreach ($equipo as $valor) { ?>
+                            <h3 class="panel-title">Equipo: <?php echo $valor->nombre ?> </h3>
+                             <?php } ?>
                             <div class="actions pull-right">
                                 <i class="fa fa-chevron-down"></i>
                                 <i class="fa fa-times"></i>
                             </div>
                           </div>
-						  <form role = "form" action="altaProfesor.html" method="POST">
-							<a href="<?=asset_url()?>index.php/equipo/alta"><type="" class="btn btn-primary">Nuevo Equipo</button></a>
-							</form>
+                          
+                          <form role = "form" action="#" method="POST">
+                         
+                        </form>
                           <div class="panel-body">
                             <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Equipo</th>
-                                    <th>Marca</th>
-                                    <th>Modelo</th>
+                                    <th>Fecha</th>
                                     <th>Area</th>
-                                    <th></th>
-                                    <th></th>
+ 
                                 </tr>
                             </thead>
-                     
                             <tbody>
-
-
+                                
                                 <?php 
-                                foreach ($equipo as $valor) { ?>
+                                foreach ($estados as $valor) { ?>
                                 <tr>
-                                    <td><?php echo utf8_encode($valor->nombre) ?> </td>
-                                    <td><?php echo utf8_encode($valor->marca) ?></td>
-                                    <td><?php echo utf8_encode($valor->modelo) ?></td>
-                                    <td><?php echo $valor->Area ?></td>
-                                    <td><a href="<?=asset_url()?>index.php/equipo/unico?id=<?php echo utf8_encode($valor->id) ?>"><i class="fa fa-edit"></i> Detalles</a></td>
-                                    <td><a href="<?=asset_url()?>index.php/equipo/estados?id=<?php echo utf8_encode($valor->id) ?>"><i class="fa fa-edit"></i> Historial</a></td>
+                                    <td><?php echo $valor->fecha ?></td>
+                                    <td><?php echo $valor->descripcion ?></td>
+          
                                 </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
-
                        </div>
                      </div>
                 </div>

@@ -44,37 +44,37 @@
                                 foreach ($equipo as $valor) { ?>
                                 <tr>
                                     <td>Nombre</td>
-                                    <td><?php echo utf8_encode($valor->nombre) ?> </td>                    
+                                    <td><?php echo $valor->nombre ?> </td>                    
                                     
                                    
                                 </tr>
                                 <tr>
                                     <td>Marca</td>
-                                    <td><?php echo utf8_encode($valor->marca) ?></td>
+                                    <td><?php echo $valor->marca ?></td>
                                 </tr>
                                 <tr>
                                     <td>Modelo</td>
-                                    <td><?php echo utf8_encode($valor->modelo) ?></td>
+                                    <td><?php echo $valor->modelo ?></td>
                                 </tr>
                                 <tr>
                                     <td>Area</td>
-                                    <td><?php echo utf8_encode($valor->Area) ?></td>
+                                    <td><?php echo $valor->Area ?></td>
                                 </tr>
                                 <tr>
                                     <td># Serie</td>
-                                    <td><?php echo utf8_encode($valor->nserie) ?></td>
+                                    <td><?php echo $valor->nserie ?></td>
                                 </tr>
                                 <tr>
                                     <td># Iventario</td>
-                                    <td><?php echo utf8_encode($valor->ninventario) ?></td>
+                                    <td><?php echo $valor->ninventario ?></td>
                                 </tr>
                                 <tr>
                                     <td>Estado</td>
-                                    <td><?php echo utf8_encode($valor->Estado) ?></td>
+                                    <td><?php echo $valor->Estado ?></td>
                                 </tr>
                                 <tr>
                                     <td>Observaciones</td>
-                                    <td><?php echo utf8_encode($valor->observacion) ?></td>
+                                    <td><?php echo $valor->observacion ?></td>
                                 </tr>
 
                                 <?php } ?>

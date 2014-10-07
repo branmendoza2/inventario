@@ -74,7 +74,7 @@ if($_SESSION!=null) {?>
                     </li>
         -->
         <li class="sub-menu">
-            <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>Catálogos</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-envelope"></i><span>Catálogos</span><i class="arrow fa fa-angle-right pull-right"></i></a>
             <ul>
                 <li><a href="<?=asset_url()?>index.php/equipo"><span>Equipos</span></a></li>
                 <li> <a href="<?=asset_url()?>index.php/area"><span>Areas</span></a></li>
@@ -82,9 +82,22 @@ if($_SESSION!=null) {?>
                 <li> <a href="<?=asset_url()?>index.php/marca"><span>Marcas</span></a></li>
             </ul>
         </li>
+
+         <li class="sub-menu">
+            <a href="javascript:void(0);"><i class="fa fa-cog"></i><span>Acciones</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+            <ul>
+                <li><a href="<?=asset_url()?>index.php/equipo"><span>Equipos</span></a></li>
+                <li> <a href="<?=asset_url()?>index.php/area"><span>Areas</span></a></li>
+                <li> <a href="<?=asset_url()?>index.php/estado"><span>Estados</span></a></li>
+                <li> <a href="<?=asset_url()?>index.php/marca"><span>Marcas</span></a></li>
+            </ul>
+        </li>
+        <?php if($_SESSION['privilegio']=='ADM'){?>
         <li>
             <a href="<?=asset_url()?>index.php/login/logout"><span>Salir</span></a>
         </li>
+
+        <?php }?>
     </ul>
 </div>
 
