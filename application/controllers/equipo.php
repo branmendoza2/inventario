@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 session_start();
+include "phpqrcode/phpqrcode.php";
 
 if($_SESSION!=null)  {
 
