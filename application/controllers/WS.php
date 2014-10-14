@@ -9,11 +9,22 @@ class WS extends REST_Controller
     {
         //$users = $this->some_model->getSomething( $this->get('limit') );
         $equipos=$this->equipo_model->getAll();
-        //$equipos= null;
+        //$equipos= $this->equipo_model->getIncidenciasPorEquipo($this->get('id'));;
         
-        if($equipos)
+        $arregloFinal = array();
+
+        $i=0;
+
+        foreach ($equipos as $value) {
+            //$arregloFinal(i => array('id'=> $value->id, 'nombre' => $value->nombre));
+            $arregloFinal[$i] = array('id'=> $value->id, 'nombre' => $value->nombre, 'incidencias' => $this->equipo_model->getIncidenciasPorEquipo($value->id));
+            $i= $i + 1;
+        }
+
+
+        if($arregloFinal)
         {
-            $this->response($equipos, 200); // 200 being the HTTP response code
+            $this->response($arregloFinal, 200); // 200 being the HTTP response code
         }
 
         else
@@ -28,7 +39,7 @@ class WS extends REST_Controller
         $users = array(
 			array('id' => 1, 'name' => 'Some Guy', 'email' => 'example1@example.com'),
 			array('id' => 2, 'name' => 'Person Face', 'email' => 'example2@example.com'),
-			3 => array('id' => 3, 'name' => 'Scotty', 'email' => 'example3@example.com', 'fact' => array('hobbies' => array('fartings', 'bikes'))),
+			array('id' => 3, 'name' => 'Scotty', 'email' => 'example3@example.com', 'fact' => array('hobbies' => array('fartings', 'bikes'))),
 		);
         
         if($users)

@@ -167,6 +167,9 @@ class Equipo_Model extends CI_Model{
         $this->db->update('carrera', $data); 
     }
 
-    
+    function getIncidenciasPorEquipo($id){
+        $query = $this->db->query('select i.descripcion, i.fecha, i.reporto, s.Detalle solucion, s.Ingeniero ingeniero, s.Fecha fecha_solucion, ev.Detalle evento from Incidencia i, Solucion s, Evento ev where i.Equipo_id = '. $id .' and i.Evento_id = ev.Id and i.Solucion_id = s.Id');
+        return $query->result();
+    }
 
 }
