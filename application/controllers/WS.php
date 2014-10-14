@@ -21,6 +21,8 @@ class WS extends REST_Controller
             $i= $i + 1;
         }
 
+        $arregloFinal = array('equipos' => $arregloFinal);
+
 
         if($arregloFinal)
         {
