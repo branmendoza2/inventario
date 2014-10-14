@@ -17,7 +17,7 @@ class WS extends REST_Controller
 
         foreach ($equipos as $value) {
             //$arregloFinal(i => array('id'=> $value->id, 'nombre' => $value->nombre));
-            $arregloFinal[$i] = array('id'=> $value->id, 'nombre' => $value->nombre, 'incidencias' => $this->equipo_model->getIncidenciasPorEquipo($value->id));
+            $arregloFinal[$i] = array('id'=> $value->id, 'nombre' => $value->nombre, 'modelo' => $value->modelo, 'nserie' => $value->nserie, 'ninventario' => $value->ninventario, 'observacion' => $value->observacion, 'marca' => $value->marca, 'area' => $value->nserie, 'estado' => $value->nserie, 'incidencias' => $this->equipo_model->getIncidenciasPorEquipo($value->id));
             $i= $i + 1;
         }
 
