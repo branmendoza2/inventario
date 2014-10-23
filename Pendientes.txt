@@ -1,0 +1,2 @@
+Ramón: hacer ejemplo de sqlite: insertar y truncate de todas las tablas
+Abraham: scanear y descargar información
